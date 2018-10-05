@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2 id="display"></h2>
+
+<button id="b1">high</button>
+<button id="b2">low</button>
+
+<script>
+    //내부함수와 closer이용
+    //var display = document.querySelector("#display");
+
+   function box(tag) {
+
+       var target = document.querySelector(tag);
+
+       var current = 0; //지역변수
+
+       function high() {
+           current++;
+           target.innerHTML = current;
+       }
+       function low() {
+           current--;
+           target.innerHTML = current;
+       }
+
+       return{high:high, low:low};
+
+   }
+
+   var v1 = box("#display"); //v1에 high low있음
+
+    var b1 = document.querySelector("#b1");
+    b1.addEventListener("click",v1.high,false);
+
+
+    document.querySelector("#b2").addEventListener("click",v1.low,false);//위와 같은 코드지만 깔끔하게
+
+</script>
+
+
+
+</body>
+</html>

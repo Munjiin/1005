@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>함수 정리</title>
+</head>
+<body>
+<!--일반함수 선언-->
+<!--리턴타입-->
+<!--내부함수 선언-->
+<script>
+function outer() {
+    var total = 0;
+    function inner() {//바깥쪽에서 이너함수를 호출 할 수 없을 때. inner함수는 private라고 생각. 전역변수를 사용하지 않아도 private 사용 가능
+        total++;
+        console.log(total);
+    }
+    inner();
+    inner();
+    inner();
+}
+outer();
+</script>
+
+<!--파라미터 전달-->
+<button id="b1">click</button>
+<script>
+    //보통 이벤트 처리하는 경우
+    //이 함수를 다른 곳에서 사용하고 싶지는 않고, 딱 한번만 쓸 경우에,,밖에 두면 아무때나 쓸 수 있지만 버튼 안에 두면 버튼 누를때만 사용 가능.
+    //오염되기가 싫어서,
+var b1 = document.querySelector("#b1");
+/*
+    //이렇게 아무렇게나 쓸 수 있음
+function doA(event) {
+    console.log('aaaa');
+}
+
+doA('aaaa');
+*/
+doA('aaa');
+    b1.addEventListener("click",function (event) {
+        console.log("aaa");
+    },false);
+</script>
+
+
+
+
+</body>
+</html>
